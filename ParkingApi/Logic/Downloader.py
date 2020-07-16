@@ -14,4 +14,4 @@ def Download(url:str)->str:
 
 def DownloadXML(url:str)->dict:
 
-	return Logic.Parser.ParseXML(Download(url))
+	return Logic.Parser.ParseParkingXML(Download(url))
