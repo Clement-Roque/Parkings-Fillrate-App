@@ -1,0 +1,1 @@
+parking_antigone_url="http://data.montpellier3m.fr/sites/default/files/ressources/FR_MTP_ANTI.xml"
