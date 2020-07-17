@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pytest = "*"
 requests = "*"
+coverage = "*"
+jsonschema = "*"
 
 [dev-packages]
 

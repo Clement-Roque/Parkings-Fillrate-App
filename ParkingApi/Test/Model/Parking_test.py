@@ -1,6 +1,7 @@
 import pytest
 from datetime import datetime
 from Model.Parking import Parking
+import Logic.Validator
 
 
 @pytest.fixture
@@ -42,3 +43,8 @@ def test_Parking_last_update(parkingTest:Parking):
 
 	assert isinstance(parkingTest.last_update,datetime)
 	assert parkingTest.last_update == datetime.strptime("2020-07-10T16:08:53",'%Y-%m-%dT%H:%M:%S')
+
+def test_toJson(parkingTest:Parking):
+
+	assert Logic.Validator.parkingJsonValidator(parkingTest.toJson()) is None
+

@@ -9,3 +9,14 @@ class Parking():
 		self.free = free
 		self.total = total
 		self.last_update = last_update
+
+	def toJson(self)->dict:
+
+		return {
+			"name":self.name,
+			"label" : self.label,
+			"status" : self.status,
+			"free" : self.free,
+			"total" : self.total,
+			"last_update" : self.last_update.strftime('%Y-%m-%dT%H:%M:%S'),
+		}
