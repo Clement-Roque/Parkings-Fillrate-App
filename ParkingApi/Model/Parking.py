@@ -2,7 +2,7 @@ import datetime
 
 class Parking():
 
-	def __init__(self,name,label,status,free,total,last_update):
+	def __init__(self,name:str,label:str,status:str,free:int,total:int,last_update:str):
 		self.name = name
 		self.label = label
 		self.status = status

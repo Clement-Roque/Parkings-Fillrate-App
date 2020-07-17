@@ -1,11 +1,11 @@
 import xml.etree.ElementTree as ElementTree
+import Ressources.MetaData as MetaData
+
 
 def ParseParkingXML(xml_string:str)->dict:
 
 	xml_content = {}
 
-	xml_tree = ElementTree.fromstring(xml_string)
+	parking_information = ElementTree.fromstring(xml_string)
 
-	# parking_dict = 
-	return {child.tag : child.attrib for child in xml_tree}
-
+	return {field : parking_information.find(field).text for field in MetaData.parking_fields}
