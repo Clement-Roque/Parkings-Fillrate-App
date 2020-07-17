@@ -1,11 +1,11 @@
 import pytest
-import datetime
+from datetime import datetime
 from Model.Parking import Parking
 
 
 @pytest.fixture
 def parkingTest() -> Parking:
-	return Parking(name="ANTI", label="Antigone",status="Open",free=192,total=280,last_update="2020-07-10T16:08:53")
+	return Parking(name="ANTI", label="Antigone",status="Open",free=192,total=280,last_update=datetime.strptime("2020-07-10T16:08:53",'%Y-%m-%dT%H:%M:%S'))
 
 
 def test_Parking_create(parkingTest:Parking):
@@ -40,5 +40,5 @@ def test_Parking_total(parkingTest:Parking):
 
 def test_Parking_last_update(parkingTest:Parking):
 
-	assert isinstance(parkingTest.last_update,datetime.datetime)
-	assert parkingTest.last_update == datetime.datetime.strptime("2020-07-10T16:08:53",'%Y-%m-%dT%H:%M:%S')
+	assert isinstance(parkingTest.last_update,datetime)
+	assert parkingTest.last_update == datetime.strptime("2020-07-10T16:08:53",'%Y-%m-%dT%H:%M:%S')

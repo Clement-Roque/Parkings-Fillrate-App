@@ -16,13 +16,17 @@ def test_ParseParkingXML():
 	assert isinstance(parking_xml_parsed,dict)
 
 	assert parking_xml_parsed['DateTime'] is not None
+	assert isinstance(parking_xml_parsed['DateTime'],datetime.datetime)
 	assert parking_xml_parsed['Free'] is not None
+	assert isinstance(parking_xml_parsed['Free'],int)
 	assert parking_xml_parsed['Name'] is not None
+	assert isinstance(parking_xml_parsed['Name'],str)
 	assert parking_xml_parsed['Status'] is not None
+	assert isinstance(parking_xml_parsed['Status'],str)
 	assert parking_xml_parsed['Total'] is not None
+	assert isinstance(parking_xml_parsed['Total'],int)
 
 	assert len(parking_xml_parsed)==5
 	assert parking_xml_parsed['Free'] <= parking_xml_parsed['Total']
 	assert parking_xml_parsed['Name'] == 'ANTI'
-	assert parking_xml_parsed['Status'] in ['Open','Close'] 
-	assert datetime.datetime.strptime(parking_xml_parsed['DateTime'],'%Y-%m-%dT%H:%M:%S')
+	assert parking_xml_parsed['Status'] in ['Open','Close']

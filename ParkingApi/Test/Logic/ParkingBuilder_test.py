@@ -25,7 +25,7 @@ def test_buildAll(parkingBuilderTest:ParkingBuilder):
 	for parking in parkings:
 
 		assert parking
-		assert isinstance(parkingAntigone,Parking)
+		assert isinstance(parking,Parking)
 		assert parking.label in MetaData.labels_to_filename.keys()
 
 		

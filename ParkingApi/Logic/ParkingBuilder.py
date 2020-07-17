@@ -27,13 +27,6 @@ class ParkingBuilder():
 		parkings = []
 		for parking_label, parking_filename in self.labels_to_filename.items():
 			print(parking_label)
-			parking_attributes = Logic.Downloader.DownloadXML(self.url+parking_filename)
-
-			parkings.append(Parking(name=parking_attributes['Name'], 
-				label=parking_label,
-				status=parking_attributes['Status'],
-				free=int(parking_attributes['Free']),
-				total=int(parking_attributes['Total']), 
-				last_update=parking_attributes['DateTime']))
+			parkings.append(self.build(parking_label))
 
 		return parkings
