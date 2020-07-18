@@ -13,10 +13,10 @@ class Parking():
 	def toJson(self)->dict:
 
 		return {
-			"name":self.name,
-			"label" : self.label,
-			"status" : self.status,
-			"free" : self.free,
-			"total" : self.total,
-			"last_update" : self.last_update.strftime('%Y-%m-%dT%H:%M:%S'),
+			"Name" : self.name,
+			"Label" : self.label,
+			"Status" : self.status,
+			"Free" : self.free,
+			"Total" : self.total,
+			"Last_update" : self.last_update.strftime('%Y-%m-%dT%H:%M:%S'),
 		}

@@ -3,8 +3,8 @@ from jsonschema import validate
 def parkingJsonValidator(parking_json):
 
 	parking_json_schema = {
-		"name" :"string",
-		"label" : "string",
+		"Name" :"string",
+		"Label" : "string",
 		"status" : "string",
 		"free" : "number",
 		"total" : "number",

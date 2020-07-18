@@ -1,4 +1,4 @@
-labels_to_filename = {
+labels_to_filenames = {
 	'Antigone': 'FR_MTP_ANTI.xml',
 	'Comédie' :'FR_MTP_COME.xml',
 	'Corum' :'FR_MTP_CORU.xml',
@@ -16,7 +16,7 @@ labels_to_filename = {
 	'Mosson' :'FR_MTP_MOSS.xml',
 	'Saint Jean Le Sec' :'FR_STJ_SJLC.xml',
 	'Euromédecine' :'FR_MTP_MEDC.xml',
-	# 'Occitanie' :'FR_MTP_OCCI.xml',
+	'Occitanie' :'FR_MTP_OCCI.xml',
 	'Vicarello' :'FR_CAS_VICA.xml',
 	'Gaumont EST' :'FR_MTP_GA109.xml',
 	'Gaumont OUEST' :'FR_MTP_GA250.xml',

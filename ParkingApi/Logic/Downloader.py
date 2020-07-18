@@ -2,16 +2,16 @@ import requests
 import Logic.Parser
 
 
-def Download(url:str)->str:
+def Download(ressource_url:str)->str:
 
 	# try:
-	response = requests.get(url)
+	response = requests.get(ressource_url)
 	# except Exception as get_exception
 		# raise
 
 	return response.text
 
 
-def DownloadXML(url:str)->dict:
+def DownloadXML(ressource_url:str)->dict:
 
-	return Logic.Parser.ParseParkingXML(Download(url))
+	return Logic.Parser.ParseParkingXML(Download(ressource_url))

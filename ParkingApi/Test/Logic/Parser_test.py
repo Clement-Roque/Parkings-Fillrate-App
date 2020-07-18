@@ -29,4 +29,4 @@ def test_ParseParkingXML():
 	assert len(parking_xml_parsed)==5
 	assert parking_xml_parsed['Free'] <= parking_xml_parsed['Total']
 	assert parking_xml_parsed['Name'] == 'ANTI'
-	assert parking_xml_parsed['Status'] in ['Open','Close']
+	assert parking_xml_parsed['Status'] in ['Open','Closed']
