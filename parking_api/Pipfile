@@ -4,15 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
 requests = "*"
-coverage = "*"
 jsonschema = "*"
-pytest-cov = "*"
-pylint = "*"
 mypy = "*"
 
 [dev-packages]
+pytest-cov = "*"
+pylint = "*"
+pytest = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.8"
