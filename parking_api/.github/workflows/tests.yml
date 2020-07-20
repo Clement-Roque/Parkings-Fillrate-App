@@ -10,5 +10,5 @@ jobs:
       with:
         python-version: 3.8
         architecture: x64
-    - run: make setup
-    - run: make test
+    - run: cd parking_api && make setup
+    - run: cd parking_api && make test
