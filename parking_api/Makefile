@@ -1,5 +1,5 @@
 setup:
-	pipenv install
+	python -m pipenv install
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
