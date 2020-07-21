@@ -1,5 +1,5 @@
 import datetime
-import pytest
+import pytest  # type: ignore
 from model.parking import Parking
 from services.parking_services import ParkingServices
 import ressources.meta_data as meta_data

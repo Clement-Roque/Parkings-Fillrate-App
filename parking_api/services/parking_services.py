@@ -1,3 +1,4 @@
+from typing import List, Optional
 from model.parking import Parking
 import logic.downloader
 import ressources.meta_data as meta_data
@@ -23,9 +24,9 @@ class ParkingServices():
                        total=parking_data['Total'],
                        last_update=parking_data['DateTime'])
 
-    def get_all(self) -> list:
+    def get_all(self) -> List[Optional[Parking]]:
 
-        parkings = []
+        parkings: List[Optional[Parking]] = []
         for parking_label in self.labels_to_filenames:
             parkings.append(self.get(parking_label))
 

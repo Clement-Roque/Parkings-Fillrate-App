@@ -1,6 +1,7 @@
-from jsonschema import validate
+from typing import Dict
+from jsonschema import validate  # type: ignore
 
-def parking_json_validator(parking_json):
+def parking_json_validator(parking_json: Dict[str, str]):
 
     parking_json_schema = {
         "Name": "string",

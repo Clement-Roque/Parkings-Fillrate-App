@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type: ignore
 import logic.validator
 
 def test_parking_json_validator():

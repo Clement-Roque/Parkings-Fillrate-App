@@ -1,5 +1,5 @@
 import test.ressources.url
-import pytest
+import pytest  # type: ignore
 import logic.downloader
 
 def test_download():

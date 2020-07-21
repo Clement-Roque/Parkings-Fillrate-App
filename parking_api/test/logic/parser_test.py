@@ -22,6 +22,7 @@ def test_parse_parking_xml():
     assert isinstance(parking_xml_parsed['Status'], str)
     assert parking_xml_parsed['Total'] is not None
     assert isinstance(parking_xml_parsed['Total'], int)
+    print(type(parking_xml_parsed['Total']))
 
     assert len(parking_xml_parsed) == 5
     assert parking_xml_parsed['Free'] <= parking_xml_parsed['Total']
