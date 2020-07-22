@@ -16,7 +16,7 @@ clean-test:
 clean: clean-pyc clean-test
 
 check:	clean
-	pipenv run pytest --cov=. --cov-fail-under 93
+	pipenv run pytest --cov=. --cov-fail-under 95
 	pipenv run mypy parking_api/ test/
 
 start_parking_api :
