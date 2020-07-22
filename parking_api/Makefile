@@ -14,5 +14,8 @@ clean-test:
 
 clean: clean-pyc clean-test
 
-test:	clean
+check:	clean
 	pipenv run pytest --cov=. --cov-fail-under 95
+	pipenv run mypy model/ services/ logic/ ressources/ test/
+
+
