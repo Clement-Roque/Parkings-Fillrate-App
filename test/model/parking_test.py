@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytest  # type: ignore
-from model.parking import Parking
-import logic.validator
+from parking_api.model.parking import Parking
+from parking_api.logic import validator
 
 
 @pytest.fixture
@@ -50,4 +50,4 @@ def test_parking_last_update(parking_test: Parking):
 
 def test_to_json(parking_test: Parking):
 
-    assert logic.validator.parking_json_validator(parking_test.to_json()) is None
+    assert validator.parking_json_validator(parking_test.to_json()) is None

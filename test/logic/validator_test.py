@@ -1,5 +1,5 @@
 import pytest  # type: ignore
-import logic.validator
+from parking_api.logic import validator
 
 def test_parking_json_validator():
 
@@ -21,6 +21,6 @@ def test_parking_json_validator():
         "Last_update": 34
     }
 
-    assert logic.validator.parking_json_validator(valid_parking_json) is None
+    assert validator.parking_json_validator(valid_parking_json) is None
     with pytest.raises(Exception):
-        assert logic.validator.parking_json_validator(invalid_parking_json)
+        assert validator.parking_json_validator(invalid_parking_json)

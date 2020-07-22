@@ -1,13 +1,13 @@
 import datetime
-import logic.parser
+from parking_api.logic import parser
 
 
 def test_parse_parking_xml():
 
-    with open("parking_api/test/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
+    with open("test/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
         parking_xml_to_parse = parking_xml_to_read.read()
 
-    parking_xml_parsed = logic.parser.parse_parking_xml(parking_xml_to_parse)
+    parking_xml_parsed = parser.parse_parking_xml(parking_xml_to_parse)
 
     assert parking_xml_parsed is not None
     assert isinstance(parking_xml_parsed, dict)

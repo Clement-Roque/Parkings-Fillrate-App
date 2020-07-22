@@ -1,5 +1,5 @@
 import requests
-import logic.parser
+from parking_api.logic import parser
 
 
 def download(ressource_url: str) -> str:
@@ -14,4 +14,4 @@ def download(ressource_url: str) -> str:
 
 def download_xml(ressource_url: str) -> dict:
 
-    return logic.parser.parse_parking_xml(download(ressource_url))
+    return parser.parse_parking_xml(download(ressource_url))

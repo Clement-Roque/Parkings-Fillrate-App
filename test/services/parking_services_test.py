@@ -1,8 +1,8 @@
 import datetime
 import pytest  # type: ignore
-from model.parking import Parking
-from services.parking_services import ParkingServices
-import ressources.meta_data as meta_data
+from parking_api.model.parking import Parking
+from parking_api.services.parking_services import ParkingServices
+from parking_api.ressources import meta_data
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 from typing import List, Optional
-from model.parking import Parking
-import logic.downloader
-import ressources.meta_data as meta_data
+from parking_api.model.parking import Parking
+from parking_api.logic import downloader
+from parking_api.ressources import meta_data
 
 class ParkingServices():
 
@@ -14,7 +14,7 @@ class ParkingServices():
 
         parking_filename = self.labels_to_filenames[parking_label]
 
-        parking_data = logic.downloader.download_xml(
+        parking_data = downloader.download_xml(
             self.parking_url + parking_filename)
 
         return Parking(name=parking_data['Name'],
