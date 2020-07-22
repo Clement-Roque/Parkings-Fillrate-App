@@ -15,7 +15,9 @@ clean-test:
 clean: clean-pyc clean-test
 
 check:	clean
-	pipenv run pytest --cov=. --cov-fail-under 95
-	pipenv run mypy model/ services/ logic/ ressources/ test/
+	pipenv run pytest parking_api --cov=parking_api --cov-fail-under 95
+	pipenv run mypy parking_api
 
+start_parking_api :
+	export FLASK_APP=parking_app && pipenv run flask run
 

@@ -10,7 +10,7 @@ class ParkingServices():
         self.parking_url = meta_data.PARKING_URL
         self.labels_to_filenames = meta_data.labels_to_filenames
 
-    def get(self, parking_label: str) -> Parking:
+    def get_by_parking_label(self, parking_label: str) -> Parking:
 
         parking_filename = self.labels_to_filenames[parking_label]
 
@@ -28,6 +28,6 @@ class ParkingServices():
 
         parkings: List[Optional[Parking]] = []
         for parking_label in self.labels_to_filenames:
-            parkings.append(self.get(parking_label))
+            parkings.append(self.get_by_parking_label(parking_label))
 
         return parkings

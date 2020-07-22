@@ -4,7 +4,7 @@ import logic.parser
 
 def test_parse_parking_xml():
 
-    with open("./test/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
+    with open("parking_api/test/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
         parking_xml_to_parse = parking_xml_to_read.read()
 
     parking_xml_parsed = logic.parser.parse_parking_xml(parking_xml_to_parse)

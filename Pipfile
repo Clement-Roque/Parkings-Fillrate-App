@@ -7,6 +7,7 @@ name = "pypi"
 requests = "*"
 jsonschema = "*"
 mypy = "*"
+flask = "*"
 
 [dev-packages]
 pytest-cov = "*"

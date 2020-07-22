@@ -9,9 +9,9 @@ import ressources.meta_data as meta_data
 def parking_services_test() -> ParkingServices:
     return ParkingServices()
 
-def test_get(parking_services_test: ParkingServices):
+def test_get_by_parking_label(parking_services_test: ParkingServices):
 
-    parking_to_test = parking_services_test.get("Antigone")
+    parking_to_test = parking_services_test.get_by_parking_label("Antigone")
 
     assert parking_to_test
     assert isinstance(parking_to_test, Parking)
