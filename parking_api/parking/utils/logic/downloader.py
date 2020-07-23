@@ -1,5 +1,5 @@
 import requests
-from parking_api.logic import parser
+from ..logic import parser
 
 
 def download(ressource_url: str) -> str:

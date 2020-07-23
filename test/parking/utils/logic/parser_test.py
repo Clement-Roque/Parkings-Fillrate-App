@@ -1,10 +1,10 @@
 import datetime
-from parking_api.logic import parser
+from parking_api.parking.utils.logic import parser
 
 
 def test_parse_parking_xml():
 
-    with open("test/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
+    with open("test/parking/utils/ressources/FR_MTP_ANTI.xml", 'r') as parking_xml_to_read:
         parking_xml_to_parse = parking_xml_to_read.read()
 
     parking_xml_parsed = parser.parse_parking_xml(parking_xml_to_parse)

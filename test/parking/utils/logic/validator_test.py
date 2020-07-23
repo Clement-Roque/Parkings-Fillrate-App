@@ -1,5 +1,5 @@
 import pytest  # type: ignore
-from parking_api.logic import validator
+from parking_api.parking.utils.logic import validator
 
 def test_parking_json_validator():
 

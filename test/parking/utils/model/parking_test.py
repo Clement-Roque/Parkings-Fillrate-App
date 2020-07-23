@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytest  # type: ignore
-from parking_api.model.parking import Parking
-from parking_api.logic import validator
+from parking_api.parking.utils.model.parking import Parking
+from parking_api.parking.utils.logic import validator
 
 
 @pytest.fixture

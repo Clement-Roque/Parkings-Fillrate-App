@@ -1,7 +1,7 @@
 from typing import List, Optional
-from parking_api.model.parking import Parking
-from parking_api.logic import downloader
-from parking_api.ressources import meta_data
+from ..model.parking import Parking
+from ..logic import downloader
+from ..ressources import meta_data
 
 class ParkingServices():
 

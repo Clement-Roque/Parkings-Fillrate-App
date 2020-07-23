@@ -1,7 +1,7 @@
 from typing import Dict, Union, Optional, cast
 import datetime
 import xml.etree.ElementTree as ElementTree
-import parking_api.ressources.meta_data as meta_data
+from ..ressources import meta_data
 
 
 def parse_parking_xml(xml_string: str) -> Dict[str, Union[Optional[str], int, datetime.datetime]]:
