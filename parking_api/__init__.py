@@ -25,7 +25,9 @@ def create_app(test_config=None):
 
     with app.app_context():
         from .home import home  # type: ignore
+        from .parking import parking  # type: ignore
 
         app.register_blueprint(home.home)
+        app.register_blueprint(parking.parking)
 
     return app

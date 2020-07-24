@@ -34,6 +34,27 @@ def test_config():
     assert create_app({"TESTING": True}).testing
 
 
-def test_hello(client):
+def test_home(client):
     response = client.get("/")
+
     assert response.data == b"Hello, World!"
+
+
+def test_parking_by_label(client):
+    response = client.get("/parking/Antigone")
+
+    parking_json = response.get_json()
+
+    assert parking_json
+    assert parking_json is not None
+
+    assert parking_json["Last_update"] is not None
+    assert parking_json["Free"] is not None
+    assert parking_json["Name"] is not None
+    assert parking_json["Status"] is not None
+    assert parking_json["Total"] is not None
+    assert parking_json["Label"] is not None
+
+    assert int(parking_json["Free"]) <= int(parking_json["Total"])
+    assert parking_json["Status"] in ['Open', 'Closed']
+    assert parking_json["Label"] == "Antigone"

@@ -27,9 +27,12 @@ def test_get_by_parking_label(parking_services_test: ParkingServices):
     assert isinstance(parking_to_test.status, str)
     assert parking_to_test.total is not None
     assert isinstance(parking_to_test.total, int)
+    assert parking_to_test.label is not None
+    assert isinstance(parking_to_test.label, str)
 
-    assert parking_to_test.free <= parking_to_test.free
+    assert parking_to_test.free <= parking_to_test.total
     assert parking_to_test.status in ['Open', 'Closed']
+    assert parking_to_test.label == "Antigone"
 
 def test_get_all(parking_services_test: ParkingServices):
 
@@ -56,6 +59,6 @@ def test_get_all(parking_services_test: ParkingServices):
         assert parking_to_test.label is not None
         assert isinstance(parking_to_test.label, str)
 
-        assert parking_to_test.free <= parking_to_test.free
+        assert parking_to_test.free <= parking_to_test.total
         assert parking_to_test.status in ['Open', 'Closed']
         assert parking_to_test.label in meta_data.labels_to_filenames.keys()
