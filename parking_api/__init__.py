@@ -27,7 +27,9 @@ def create_app(test_config=None):
         from .home import home  # type: ignore
         from .parking import parking  # type: ignore
 
-        app.register_blueprint(home.home)
-        app.register_blueprint(parking.parking)
+        app.register_blueprint(home.home_bp)
+        app.register_blueprint(parking.parking_bp)
+
+        app.add_url_rule('/', endpoint='index')
 
     return app
