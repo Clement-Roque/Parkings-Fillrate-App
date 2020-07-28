@@ -14,3 +14,11 @@ def parking_by_label(parking_label: str):
         return flask.jsonify(parking_service.get_by_parking_label(parking_label))
     else:
         flask.abort(404)
+
+
+@parking_bp.route('/parking/')
+def parkings():
+
+    parking_service = ParkingServices()
+
+    return flask.jsonify(parking_service.get_all())
