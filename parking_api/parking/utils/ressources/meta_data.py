@@ -24,3 +24,16 @@ labels_to_filenames = {
 }
 parking_fields = ['DateTime', 'Name', 'Status', 'Free', 'Total']
 PARKING_URL = "http://data.montpellier3m.fr/sites/default/files/ressources/"
+parking_json_schema = {
+    "type": "object",
+    "properties": {
+        "Name": {"type": "string"},
+        # "label": {"type": "string"},
+        "Status": {"type": "string"},
+        "Free": {"type": "number"},
+        "Total": {"type": "number"},
+        "DateTime": {"type": "string"},
+    },
+    "required": ["Name", "Status", "Free", "Total", "DateTime"]
+    # "required": ["name", "label", "status", "free", "total", "lastUpdate"]
+}

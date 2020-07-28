@@ -50,4 +50,4 @@ def test_parking_last_update(parking_test: Parking):
 
 def test_to_json(parking_test: Parking):
 
-    assert validator.parking_json_validator(parking_test.to_json()) is None
+    assert validator.parking_json_validator(parking_test.to_json()) is True

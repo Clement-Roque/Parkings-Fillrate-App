@@ -1,15 +1,12 @@
 from typing import Dict
-from jsonschema import validate  # type: ignore
+from ..ressources import meta_data
+import jsonschema   # type: ignore
 
-def parking_json_validator(parking_json: Dict[str, str]):
+def parking_json_validator(parking_json: Dict[str, str]) -> bool:
 
-    parking_json_schema = {
-        "Name": "string",
-        "Label": "string",
-        "status": "string",
-        "free": "number",
-        "total": "number",
-        "last_update": "string",
-    }
-
-    return validate(instance=parking_json, schema=parking_json_schema)
+    try:
+        jsonschema.validate(instance=parking_json,
+                            schema=meta_data.parking_json_schema)
+    except (jsonschema.exceptions.ValidationError, jsonschema.exceptions.SchemaError):
+        return False
+    return True

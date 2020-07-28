@@ -11,6 +11,6 @@ def parking_by_label(parking_label: str):
     if (parking_label in meta_data.labels_to_filenames.keys()):
         parking_service = ParkingServices()
 
-        return flask.jsonify(parking_service.get_by_parking_label(parking_label).to_json())
+        return flask.jsonify(parking_service.get_by_parking_label(parking_label))
     else:
         flask.abort(404)

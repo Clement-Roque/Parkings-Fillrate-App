@@ -21,9 +21,9 @@ class Parking():
 
         return {
             "Name": self.name,
-            "Label": self.label,
+            # "Label": self.label,
             "Status": self.status,
             "Free": self.free,
             "Total": self.total,
-            "Last_update": self.last_update.strftime('%Y-%m-%dT%H:%M:%S'),
+            "DateTime": self.last_update.strftime('%Y-%m-%dT%H:%M:%S'),
         }
