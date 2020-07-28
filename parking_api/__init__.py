@@ -24,10 +24,10 @@ def create_app(test_config=None):
         pass
 
     with app.app_context():
-        from .home import home  # type: ignore
+        from .index import index  # type: ignore
         from .parking import parking  # type: ignore
 
-        app.register_blueprint(home.home_bp)
+        app.register_blueprint(index.index_bp)
         app.register_blueprint(parking.parking_bp)
 
         app.add_url_rule('/', endpoint='index')

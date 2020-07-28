@@ -37,7 +37,7 @@ def test_config():
 def test_home(client):
     response = client.get("/")
 
-    assert response.data == b"Hello, World!"
+    assert response.status == '200 OK'
 
 
 def test_parking_by_label(client):
