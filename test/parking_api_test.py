@@ -2,9 +2,9 @@ import os
 import tempfile
 
 import pytest  # type: ignore
-
-from parking_api import create_app
 from flask import Flask
+from parking_api import create_app
+
 
 
 @pytest.fixture

@@ -1,7 +1,6 @@
 from typing import List, Optional, Dict
 from ..ressources import meta_data
 from ..logic import downloader
-from ..adapters import xml_adapter
 
 class ParkingServices():
 
@@ -15,9 +14,7 @@ class ParkingServices():
         parking_filename = self.labels_to_filenames[parking_label]
         parking_xml_url = self.parking_url + parking_filename
 
-        parking_xml_adapter = xml_adapter.XmlAdapter(
-            downloader.download_as_text(parking_xml_url))
-        return parking_xml_adapter.get_data()
+        return downloader.get_data_from_xml_parking_ressource(parking_xml_url)
 
     def get_all(self) -> List[Dict[str, Optional[str]]]:
 

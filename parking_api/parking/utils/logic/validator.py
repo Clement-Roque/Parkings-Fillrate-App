@@ -1,8 +1,8 @@
 from typing import Dict
-from ..ressources import meta_data
 import jsonschema   # type: ignore
+from ..ressources import meta_data
 
-def is_valid_parking_json(parking_json: Dict[str, str]) -> bool:
+def is_parking_json_valid(parking_json: Dict[str, str]) -> bool:
 
     try:
         jsonschema.validate(instance=parking_json,
