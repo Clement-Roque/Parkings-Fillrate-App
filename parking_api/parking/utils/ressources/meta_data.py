@@ -1,4 +1,4 @@
-labels_to_filenames = {
+parkings_label_to_filenames = {
     'Antigone': 'FR_MTP_ANTI.xml',
     'Comédie': 'FR_MTP_COME.xml',
     'Corum': 'FR_MTP_CORU.xml',
@@ -22,6 +22,31 @@ labels_to_filenames = {
     'Gaumont OUEST': 'FR_MTP_GA250.xml',
     'Charles de Gaulle': 'FR_CAS_CDGA.xml',
 }
+
+parkings_label = [
+    'Antigone',
+    'Comédie',
+    'Corum',
+    'Europa',
+    'Foch',
+    'Gambetta',
+    'Gare',
+    'du Triangle',
+    'Arc de Triomphe',
+    'Pitot',
+    'Circe',
+    'Sabines',
+    'Garcia Lorca',
+    'Sablassou',
+    'Mosson',
+    'Saint Jean Le Sec',
+    'Euromédecine',
+    'Occitanie',
+    'Vicarello',
+    'Gaumont EST',
+    'Gaumont OUEST',
+    'Charles de Gaulle',
+]
 
 parking_fields = ['DateTime', 'Name', 'Status', 'Free', 'Total']
 PARKING_URL = "http://data.montpellier3m.fr/sites/default/files/ressources/"

@@ -6,7 +6,7 @@ parking_bp = flask.Blueprint('parking', __name__)
 
 def is_parking_label_invalid(parking_label: str) -> bool:
 
-    return parking_label not in meta_data.labels_to_filenames.keys()
+    return parking_label not in meta_data.parkings_label_to_filenames.keys()
 
 
 @parking_bp.route('/parking/<parking_label>')
