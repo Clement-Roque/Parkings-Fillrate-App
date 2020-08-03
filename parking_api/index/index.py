@@ -1,5 +1,5 @@
 import flask
-from parking_api.parking.utils.ressources.meta_data import parkings_labels
+from parking_api.parking.ressources.meta_data import parkings_labels
 
 index_bp = flask.Blueprint('index', __name__, template_folder='templates', static_folder='static')
 

@@ -4,6 +4,15 @@ from .index import index  # type: ignore
 from .parking import parking  # type: ignore
 
 
+def _initialize_blueprints(app):
+    app.register_blueprint(index.index_bp)
+    app.register_blueprint(parking.parking_bp)
+
+
+def _initialize_url_rules(app):
+    app.add_url_rule('/', endpoint='index')
+
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -26,9 +35,7 @@ def create_app(test_config=None):
 
     with app.app_context():
 
-        app.register_blueprint(index.index_bp)
-        app.register_blueprint(parking.parking_bp)
-
-        app.add_url_rule('/', endpoint='index')
+        _initialize_blueprints(app)
+        _initialize_url_rules(app)
 
     return app

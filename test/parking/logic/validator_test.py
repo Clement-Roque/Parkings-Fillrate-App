@@ -1,4 +1,4 @@
-from parking_api.parking.utils.logic import validator
+from parking_api.parking.logic import validator
 
 def test_is_parking_json_valid():
 

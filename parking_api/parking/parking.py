@@ -1,6 +1,6 @@
 import flask
-from .utils.services.parking_services import ParkingServices
-from .utils.ressources import meta_data
+from .services.parking_services import ParkingServices
+from .ressources import meta_data
 
 parking_bp = flask.Blueprint('parking', __name__)
 

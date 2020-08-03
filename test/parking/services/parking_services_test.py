@@ -1,7 +1,7 @@
 from typing import cast
 import pytest  # type: ignore
-from parking_api.parking.utils.services.parking_services import ParkingServices
-from parking_api.parking.utils.ressources import meta_data
+from parking_api.parking.services.parking_services import ParkingServices
+from parking_api.parking.ressources import meta_data
 
 
 @pytest.fixture

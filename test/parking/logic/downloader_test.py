@@ -1,6 +1,6 @@
 import pytest  # type: ignore
-from parking_api.parking.utils.logic import downloader
-from parking_api.parking.utils.logic import validator
+from parking_api.parking.logic import downloader
+from parking_api.parking.logic import validator
 from ..ressources import url
 
 
