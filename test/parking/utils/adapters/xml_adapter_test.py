@@ -16,10 +16,10 @@ def test_xml_adapter(xml_for_test: str):
     assert xml_adapter
     assert isinstance(xml_adapter.xml, ElementTree.Element)
 
-def test_to_dict(xml_for_test: str):
+def test_get_data(xml_for_test: str):
 
     xml_adapter = XmlAdapter(xml_for_test)
-    xml_content = xml_adapter.to_dict()
+    xml_content = xml_adapter.get_data()
 
     assert isinstance(xml_content, dict)
     assert len(xml_content) > 0

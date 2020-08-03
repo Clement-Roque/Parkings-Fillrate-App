@@ -17,7 +17,7 @@ class ParkingServices():
 
         parking_xml_adapter = xml_adapter.XmlAdapter(
             downloader.download_as_text(parking_xml_url))
-        return parking_xml_adapter.to_dict()
+        return parking_xml_adapter.get_data()
 
     def get_all(self) -> List[Dict[str, Optional[str]]]:
 

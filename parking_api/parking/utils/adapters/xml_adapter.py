@@ -9,6 +9,6 @@ class XmlAdapter():
 
         self.xml = ElementTree.XML(xml)
 
-    def to_dict(self) -> Dict[str, Optional[str]]:
+    def get_data(self) -> Dict[str, Optional[str]]:
 
         return {field: self.xml.findtext(field) for field in meta_data.parking_fields}

@@ -1,6 +1,6 @@
 from parking_api.parking.utils.logic import validator
 
-def test_parking_json_validator():
+def test_is_valid_parking_json():
 
     valid_parking_json = {
         "Name": "ANTI",
@@ -20,5 +20,5 @@ def test_parking_json_validator():
         "last_update": 34
     }
 
-    assert validator.parking_json_validator(valid_parking_json) is True
-    assert validator.parking_json_validator(invalid_parking_json) is False
+    assert validator.is_valid_parking_json(valid_parking_json) is True
+    assert validator.is_valid_parking_json(invalid_parking_json) is False
