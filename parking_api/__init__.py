@@ -2,11 +2,16 @@ import os
 from flask import Flask
 from .index import index  # type: ignore
 from .parking import parking  # type: ignore
+from .error import error  # type: ignore
 
 
 def _initialize_blueprints(app):
     app.register_blueprint(index.index_bp)
     app.register_blueprint(parking.parking_bp)
+
+
+def _initialize_errors_hanlders(app):
+    app.register_blueprint(error.error_bp)
 
 
 def _initialize_url_rules(app):
@@ -36,6 +41,7 @@ def create_app(test_config=None):
     with app.app_context():
 
         _initialize_blueprints(app)
+        _initialize_errors_hanlders(app)
         _initialize_url_rules(app)
 
     return app
