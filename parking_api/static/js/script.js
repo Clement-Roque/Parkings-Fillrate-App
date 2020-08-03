@@ -1,4 +1,4 @@
-var parking_labels = [
+var parkings_labels = [
     'Antigone',
     'Comédie',
     'Corum',
@@ -32,8 +32,9 @@ function get_parking_by_label(parking_label){
 
 }
 
-function get_all_parking_labels(parking_labels){
-	parking_labels.forEach(parking_label => get_parking_by_label(parking_label));
+function get_all_parkings_labels(parkings_labels){
+	parkings_labels.forEach(parking_label => get_parking_by_label(parking_label));
 }
 
-get_all_parking_labels(parking_labels);
+get_all_parkings_labels(parkings_labels);
+
