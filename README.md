@@ -2,8 +2,11 @@
 
 This application use OpenData from the south french city Montpellier in order to provide a fillrate for the various parking in the city.
 It's build using Python 3.8 and the Flask framework.
+
 http://data.montpellier3m.fr/
+
 https://docs.python.org/fr/3.8/index.html
+
 https://flask.palletsprojects.com/en/1.1.x/
 
 I'm developping this project using XP, TDD and clean code principles.
