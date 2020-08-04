@@ -9,6 +9,8 @@ https://flask.palletsprojects.com/en/1.1.x/
 I'm developping this project using XP, TDD and clean code principles.
 
 
+
+
 # Launch
 
 Thanks to the Makefile, you can easily launch this project from an unix system.
@@ -16,7 +18,7 @@ It required at least Python 3.8 and pip for being installed :
 	
 	make setup
 
-Then you can launch the app using the following command :
+Then you can launch the app using the following command, but be carreful, it's not production ready :
 
 	make start_parking_api
 
