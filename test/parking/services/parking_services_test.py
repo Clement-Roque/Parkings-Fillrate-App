@@ -8,13 +8,13 @@ from parking_api.parking.ressources import meta_data
 def parking_services_test() -> ParkingServices:
     return ParkingServices()
 
-def test_get_parkings_labels(parking_services_test: ParkingServices):
+def test_get_parking_labels(parking_services_test: ParkingServices):
 
-    parkings_labels = parking_services_test.get_parkings_labels()
+    parking_labels = parking_services_test.get_parking_labels()
 
-    assert len(parkings_labels) == len(meta_data.parkings_labels)
-    for parking_label in parkings_labels:
-        assert parking_label in meta_data.parkings_labels
+    assert len(parking_labels) == len(meta_data.parking_labels)
+    for parking_label in parking_labels:
+        assert parking_label in meta_data.parking_labels
 
 
 def test_get_by_parking_label(parking_services_test: ParkingServices):
@@ -32,7 +32,7 @@ def test_get_all(parking_services_test: ParkingServices):
 
     parkings = parking_services_test.get_all()
 
-    assert len(parkings) == len(meta_data.parkings_labels_to_filenames)
+    assert len(parkings) == len(meta_data.parking_labels_to_filenames)
 
     for parking_to_test in parkings:
 

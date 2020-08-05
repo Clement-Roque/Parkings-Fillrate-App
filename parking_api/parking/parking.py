@@ -6,7 +6,7 @@ parking_bp = flask.Blueprint('parking', __name__)
 
 def is_parking_label_invalid(parking_label: str) -> bool:
 
-    return parking_label not in meta_data.parkings_labels_to_filenames.keys()
+    return parking_label not in meta_data.parking_labels_to_filenames.keys()
 
 
 @parking_bp.route('/parking/<parking_label>')
@@ -28,8 +28,11 @@ def parkings():
 
 
 @parking_bp.route('/parkings/labels')
-def parkings_labels():
+def parking_labels():
 
     parking_service = ParkingServices()
 
-    return flask.jsonify(parking_service.get_parkings_labels())
+    response = flask.make_response(flask.jsonify(
+        parking_service.get_parking_labels()), {'Access-Control-Allow-Origin': '*'})
+
+    return response

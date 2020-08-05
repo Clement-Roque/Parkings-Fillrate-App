@@ -82,12 +82,12 @@ def test_parkings(client):
         assert parking_json["Status"] in ['Open', 'Closed']
 
 
-def test_parkings_labels(client):
+def test_parking_labels(client):
     response = client.get("/parkings/labels")
 
-    parkings_labels = response.get_json()
+    parking_labels = response.get_json()
 
-    assert len(parkings_labels) > 0
-    for parking_label in parkings_labels:
+    assert len(parking_labels) > 0
+    for parking_label in parking_labels:
         assert isinstance(parking_label, str)
         assert len(parking_label) > 0

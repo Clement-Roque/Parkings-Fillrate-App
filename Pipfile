@@ -15,6 +15,7 @@ pylint = "*"
 pytest = "*"
 coverage = "*"
 pytest-pylint = "*"
+jasmine = "*"
 
 [requires]
 python_version = "3.8"

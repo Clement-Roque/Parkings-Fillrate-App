@@ -1,4 +1,4 @@
-parkings_labels_to_filenames = {
+parking_labels_to_filenames = {
     'Antigone': 'FR_MTP_ANTI.xml',
     'Comédie': 'FR_MTP_COME.xml',
     'Corum': 'FR_MTP_CORU.xml',
@@ -23,7 +23,7 @@ parkings_labels_to_filenames = {
     'Charles de Gaulle': 'FR_CAS_CDGA.xml',
 }
 
-parkings_labels = [
+parking_labels = [
     'Antigone',
     'Comédie',
     'Corum',
