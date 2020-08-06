@@ -30,7 +30,7 @@ describe('Testing the request functions ', function() {
     console.log(requested_parking_labels)
 
     expect(requested_parking_labels.length).toBe(parking_labels.length);
-    expect(requested_parking_labels).toBe(parking_labels);
+    expect(requested_parking_labels).toEqual(parking_labels);
 
   })
 

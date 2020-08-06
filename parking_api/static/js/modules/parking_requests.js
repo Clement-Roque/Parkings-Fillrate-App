@@ -15,20 +15,14 @@ function get_all_parkings(parking_labels){
 
 
 function get_all_parking_labels(){
-	let request = new Request("http:\/\/127.0.0.1:5000/parkings/labels");
-
-	fetch(request)
-	  .then(response => {
-	    if (response.status === 200) {
-	      return response;
-	    } else {
-	      throw new Error('Something went wrong on api server!');
-	    }
-	  })
-	  .then(response => {
-	    console.debug(response);
-	    // ...
-	  }).catch(error => {
-	    console.error(error);
-	  });
+	
+	fetch("http:\/\/127.0.0.1:5000/parkings/labels")
+		.then((resp) => resp.json())
+		.then(function(data){
+			get_all_parkings(data);
+		
+		})
 }
+
+
+export {get_all_parking_labels}

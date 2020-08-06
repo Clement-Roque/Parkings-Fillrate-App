@@ -12,8 +12,8 @@
     #   - dist/**/*.js
     #
     src_files:
-        - "modules/*.js"
-        - "*.js"
+        - "static/js/modules/*.js"
+        - "static/js/*.js"
 
     # stylesheets
     #
@@ -64,7 +64,7 @@
     #
     # src_dir: public
     #
-    src_dir: parking_api/static/js
+    src_dir: parking_api/
 
     # spec_dir
     #
