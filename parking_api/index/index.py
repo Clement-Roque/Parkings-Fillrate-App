@@ -1,5 +1,5 @@
 import flask
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from parking_api.parking.ressources.meta_data import parking_labels
 from parking_api.parking.services import parking_services
 
