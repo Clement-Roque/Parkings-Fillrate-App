@@ -9,9 +9,8 @@ def handle_not_found_error(error):
 
     flask.current_app.logger.info(error)
     status_code: int = 404
-    success: bool = False
     response = {
-        'success': success,
+        'success': False,
         'error': {
             'type': 'NotFoundException',
             'message': 'Ressource Not Found'
@@ -26,9 +25,8 @@ def handle_unexpected_error(error):
 
     flask.current_app.logger.info(error)
     status_code: int = 500
-    success: bool = False
     response = {
-        'success': success,
+        'success': False,
         'error': {
             'type': 'UnexpectedException',
             'message': 'An unexpected error has occurred.'

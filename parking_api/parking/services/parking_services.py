@@ -18,14 +18,6 @@ class ParkingServices():
 
         return downloader.get_data_from_xml_parking_ressource(parking_xml_url)
 
-    def get_parkings_by_labels(self, parking_labels: List[str]) -> List[Dict[str, Optional[str]]]:
-
-        parkings: List[Dict[str, Optional[str]]] = []
-        for parking_label in parking_labels:
-            parkings.append(self.get_parking_by_label(parking_label))
-
-        return parkings
-
     def get_parking_labels(self) -> List[str]:
 
         return self.parking_labels

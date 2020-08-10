@@ -59,7 +59,9 @@ def test_parking_by_label(client):
 
 def test_parking_by_label_not_found(client):
     response = client.get("/parking/Antine")
-    assert response.status == '404 NOT FOUND'
+    assert response.status_code == 404
+    assert response.get_data(
+        as_text=True) == '{"error":{"message":"Ressource Not Found","type":"NotFoundException"},"success":false}\n'
 
 
 def test_parking_labels(client):

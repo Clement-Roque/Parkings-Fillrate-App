@@ -1,4 +1,5 @@
 import flask
+import werkzeug
 from .services import parking_services
 from .ressources import meta_data
 
@@ -13,7 +14,7 @@ def is_parking_label_invalid(parking_label: str) -> bool:
 def parking_by_label(parking_label: str):
 
     if is_parking_label_invalid(parking_label):
-        flask.abort(404)
+        raise werkzeug.exceptions.NotFound
 
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
     return flask.jsonify(parking_service.get_parking_by_label(parking_label))

@@ -7,7 +7,7 @@ name = "pypi"
 requests = "*"
 jsonschema = "*"
 mypy = "*"
-flask = "*"
+Flask = "*"
 
 [dev-packages]
 pytest-cov = "*"
@@ -15,7 +15,6 @@ pylint = "*"
 pytest = "*"
 coverage = "*"
 pytest-pylint = "*"
-jasmine = "*"
 
 [requires]
 python_version = "3.8"
