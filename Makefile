@@ -18,7 +18,7 @@ check:	clean
 	pipenv run pytest --cov=. --cov-fail-under 95
 	pipenv run mypy parking_api/ test/
 	pipenv run pylint parking_api/ --disable=C0114,C0115,C0116
-	pipenv run pylint test/ --disable=C0114,C0115,C0116,W0621
+	pipenv run pylint test/ --disable=C0114,C0115,C0116,C0301,W0621
 
 
 start_parking_api :

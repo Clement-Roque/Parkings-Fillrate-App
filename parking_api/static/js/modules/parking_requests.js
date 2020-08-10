@@ -16,7 +16,7 @@ function get_all_parkings(parking_labels){
 
 function get_all_parking_labels(){
 	
-	fetch("http:\/\/127.0.0.1:5000/parkings/labels")
+	fetch("http:\/\/127.0.0.1:5000/parkings")
 		.then((resp) => resp.json())
 		.then(function(data){
 			get_all_parkings(data);
