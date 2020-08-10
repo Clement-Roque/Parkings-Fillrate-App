@@ -11,18 +11,18 @@ class ParkingServices():
         self.parking_labels_to_filenames: Dict[str,
                                                str] = meta_data.parking_labels_to_filenames
 
-    def get_by_parking_label(self, parking_label: str) -> Dict[str, Optional[str]]:
+    def get_parking_by_label(self, parking_label: str) -> Dict[str, Optional[str]]:
 
         parking_filename: str = self.parking_labels_to_filenames[parking_label]
         parking_xml_url: str = self.parking_url + parking_filename
 
         return downloader.get_data_from_xml_parking_ressource(parking_xml_url)
 
-    def get_all(self) -> List[Dict[str, Optional[str]]]:
+    def get_parkings_by_labels(self, parking_labels: List[str]) -> List[Dict[str, Optional[str]]]:
 
         parkings: List[Dict[str, Optional[str]]] = []
-        for parking_label in self.parking_labels:
-            parkings.append(self.get_by_parking_label(parking_label))
+        for parking_label in parking_labels:
+            parkings.append(self.get_parking_by_label(parking_label))
 
         return parkings
 

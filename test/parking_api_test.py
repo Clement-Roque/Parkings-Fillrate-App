@@ -62,28 +62,8 @@ def test_parking_by_label_not_found(client):
     assert response.status == '404 NOT FOUND'
 
 
-def test_parkings(client):
-    response = client.get("/parkings/")
-
-    parkings_json = response.get_json()
-
-    for parking_json in parkings_json:
-
-        assert parking_json
-        assert parking_json is not None
-
-        assert parking_json["DateTime"] is not None
-        assert parking_json["Free"] is not None
-        assert parking_json["Name"] is not None
-        assert parking_json["Status"] is not None
-        assert parking_json["Total"] is not None
-
-        assert int(parking_json["Free"]) <= int(parking_json["Total"])
-        assert parking_json["Status"] in ['Open', 'Closed']
-
-
 def test_parking_labels(client):
-    response = client.get("/parkings/labels")
+    response = client.get("/parkings")
 
     parking_labels = response.get_json()
 

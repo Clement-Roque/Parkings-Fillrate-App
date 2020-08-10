@@ -16,18 +16,10 @@ def parking_by_label(parking_label: str):
         flask.abort(404)
 
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
-    return flask.jsonify(parking_service.get_by_parking_label(parking_label))
+    return flask.jsonify(parking_service.get_parking_by_label(parking_label))
 
 
-@parking_bp.route('/parkings/')
-def parkings():
-
-    parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
-
-    return flask.jsonify(parking_service.get_all())
-
-
-@parking_bp.route('/parkings/labels')
+@parking_bp.route('/parkings')
 def parking_labels():
 
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()

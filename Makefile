@@ -2,10 +2,6 @@ setup:
 	pip install pipenv
 	pipenv install --dev
 
-clean-pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
 
 clean-mypy:
 	find . -name '.mypy_cache' -exec rm -fr {} +
@@ -16,7 +12,7 @@ clean-test:
 	find . -name '.coverage.*' -exec rm -fr {} +
 
 
-clean: clean-pyc clean-test clean-mypy
+clean: clean-test clean-mypy
 
 check:	clean
 	pipenv run pytest --cov=. --cov-fail-under 95
