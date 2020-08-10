@@ -1,3 +1,6 @@
-import {get_all_parking_labels} from "./modules/parking_requests.js"
+import {get_parking_by_label} from "./modules/parking_requests.js"
 
-get_all_parking_labels();
+{% for parking_label in parking_labels %}
+    		get_parking_by_label({{parking_label}}) ;
+{% endfor %}
+

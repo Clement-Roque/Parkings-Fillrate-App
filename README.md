@@ -26,7 +26,7 @@ Then you can launch the app using the following command, but be carreful, it's n
 
 	make start_parking_api
 
-And you can run the check (pytest, pylint and mypy) using this command :
+And you can run the checks (pytest, pylint and mypy) using this command :
 
-	make check
+	make checks
 

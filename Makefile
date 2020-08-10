@@ -14,7 +14,7 @@ clean-test:
 
 clean: clean-test clean-mypy
 
-check:	clean
+checks:	clean
 	pipenv run pytest --cov=. --cov-fail-under 95
 	pipenv run mypy parking_api/ test/
 	pipenv run pylint parking_api/ --disable=C0114,C0115,C0116

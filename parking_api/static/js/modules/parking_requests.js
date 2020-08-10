@@ -1,4 +1,5 @@
 function get_parking_by_label(parking_label){
+	
 	var parking_node = document.createElement("li"); 
 	var parking_text_node = document.createTextNode(parking_label);
 	parking_node.appendChild(parking_text_node);  
@@ -25,4 +26,4 @@ function get_all_parking_labels(){
 }
 
 
-export {get_all_parking_labels}
+export {get_parking_by_label}
