@@ -8,25 +8,12 @@
 	</div>
 	<div id="parkings-list" class="container">
 		<ul id="parkings" class="list-group">
-    	{% for parking_label, parking_information in parking_informations.items() %}
-    		<li class="list-group-item " >
-    			<div class="d-flex justify-content-between">
-    				{{parking_label}}
-    				<small class="d-flex">2 minutes ago</small>
-    			</div>
-    			{% if parking_information.Status=="Open"%}
-    				<span class="badge badge-success badge-pill">Open</span>
-    			{% else %}
-    				<span class="badge badge-danger badge-pill">Closed</span>
-    			{% endif %}
-    		</li>
-    	{% endfor %}
-    </ul>
+        </ul>
 	</div>
     
 {% endblock content %}
 
-{#{% block script %}
+{% block script %}
 	<script type="module" src="{{url_for('static', filename='js/script.js')}}">
 	</script>
-{% endblock script%}#}
+{% endblock script %}
