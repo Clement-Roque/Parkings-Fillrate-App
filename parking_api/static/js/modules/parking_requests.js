@@ -7,9 +7,7 @@ function get_datetime_diff_from_now_in_minutes(datetime){
 }
 
 
-function create_parking_information_updated_datetime(updated_datetime){
-
-	const updated_datetime_in_minutes = get_datetime_diff_from_now_in_minutes(updated_datetime);
+function create_parking_information_updated_datetime(updated_datetime_in_minutes){
 
 	let parking_small_node = document.createElement("small"); 
 	parking_small_node.className = "d-flex";
@@ -39,23 +37,48 @@ function create_parking_information_status(parking_status){
 	return parking_span_node;
 }
 
-function create_parking_label_and_updated_datetime(parking_label, updated_datetime){
+function create_parking_fill_bar(){
+
+	let parking_progressbar_node = document.createElement("div");
+	parking_progressbar_node.setAttribute("aria-valuemax", "100");
+	parking_progressbar_node.setAttribute("aria-valuemin", "0");
+	parking_progressbar_node.setAttribute("aria-valuenow", "25");
+	parking_progressbar_node.setAttribute("style", "width: 25%;");
+	parking_progressbar_node.setAttribute("role", "progressbar");
+	parking_progressbar_node.className = "progress-bar";
+	parking_progressbar_node.appendChild(document.createTextNode("25%"));
+
+	let parking_progress_node = document.createElement("div");
+	parking_progress_node.className = "progress col-4 px-0";
+
+	parking_progress_node.appendChild(parking_progressbar_node)
+
+	return parking_progress_node
+
+}
+
+function create_parking_label_and_updated_datetime(parking_label, updated_datetime_in_minutes){
 
 	let parking_div_node = document.createElement("div"); 
 	parking_div_node.className = "d-flex justify-content-between";
 	parking_div_node.appendChild(document.createTextNode(parking_label));
 
-	let parking_updated_datetime = create_parking_information_updated_datetime(updated_datetime)
+	let parking_fill_bar = create_parking_fill_bar();
+	parking_div_node.appendChild(parking_fill_bar);
+
+
+	let parking_updated_datetime = create_parking_information_updated_datetime(updated_datetime_in_minutes)
 	parking_div_node.appendChild(parking_updated_datetime);
 
 	return parking_div_node;
 }
 
-function create_parking_details(parking_label,parking_status,updated_datetime){
+function create_parking_details(parking_label,parking_status,updated_datetime_in_minutes){
 
 	let parking_information_status = create_parking_information_status(parking_status)
 
-	let parking_label_and_updated_datetime = create_parking_label_and_updated_datetime(parking_label,updated_datetime)
+	let parking_label_and_updated_datetime = create_parking_label_and_updated_datetime(parking_label,updated_datetime_in_minutes)
+
 
 	let parking_li_node = document.createElement("li"); 
 	parking_li_node.className = "list-group-item";
@@ -70,7 +93,9 @@ async function add_parking_information(parking_label){
 
 	const parking_informations = await get_parking_by_label(parking_label);
 
-	const parking_details = create_parking_details(parking_label,parking_informations.Status,parking_informations.DateTime)
+	const updated_datetime_in_minutes = get_datetime_diff_from_now_in_minutes(parking_informations.DateTime);
+
+	const parking_details = create_parking_details(parking_label,parking_informations.Status,updated_datetime_in_minutes)
 
 	document.getElementById("parkings").appendChild(parking_details); 
 
