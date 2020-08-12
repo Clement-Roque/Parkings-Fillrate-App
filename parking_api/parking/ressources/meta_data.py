@@ -55,8 +55,8 @@ parking_json_schema = {
     "properties": {
         "Name": {"type": "string"},
         "Status": {"type": "string"},
-        "Free": {"type": "string"},
-        "Total": {"type": "string"},
+        "Free": {"type": "number"},
+        "Total": {"type": "number"},
         "DateTime": {"type": "string"},
     },
     "required": ["Name", "Status", "Free", "Total", "DateTime"]

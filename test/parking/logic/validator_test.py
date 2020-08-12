@@ -5,8 +5,8 @@ def test_is_parking_json_valid():
     valid_parking_json = {
         "Name": "ANTI",
         "Status": "Open",
-        "Free": "123",
-        "Total": "34",
+        "Free": 23,
+        "Total": 34,
         "DateTime": "2020-07-10T16:08:53"
     }
 

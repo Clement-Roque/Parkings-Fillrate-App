@@ -1,10 +1,23 @@
-function create_parking_information_updated_time(updated_time_in_seconds){
+function get_datetime_diff_from_now_in_minutes(datetime){
 
-	const updated_time_in_minutes = updated_time_in_seconds/60;
+	let datetime_to_diff = new Date(datetime);
+	let now = Date.now();
+
+	return Math.ceil((now-datetime_to_diff)/1000/60);
+}
+
+
+function create_parking_information_updated_datetime(updated_datetime){
+
+	const updated_datetime_in_minutes = get_datetime_diff_from_now_in_minutes(updated_datetime);
 
 	let parking_small_node = document.createElement("small"); 
 	parking_small_node.className = "d-flex";
-	parking_small_node.appendChild(document.createTextNode("Updated "+updated_time_in_minutes+" minutes ago"));
+	let update_message = "Updated "+updated_datetime_in_minutes+" minutes ago";
+	if (updated_datetime_in_minutes>=60){
+		update_message = "Hasn't been updated for a while";
+	}
+	parking_small_node.appendChild(document.createTextNode(update_message));
 
 	return parking_small_node;
 }
@@ -26,27 +39,27 @@ function create_parking_information_status(parking_status){
 	return parking_span_node;
 }
 
-function create_parking_label_and_updated_time(parking_label){
+function create_parking_label_and_updated_datetime(parking_label, updated_datetime){
 
 	let parking_div_node = document.createElement("div"); 
 	parking_div_node.className = "d-flex justify-content-between";
 	parking_div_node.appendChild(document.createTextNode(parking_label));
 
-	let parking_updated_time = create_parking_information_updated_time(120)
-	parking_div_node.appendChild(parking_updated_time);
+	let parking_updated_datetime = create_parking_information_updated_datetime(updated_datetime)
+	parking_div_node.appendChild(parking_updated_datetime);
 
 	return parking_div_node;
 }
 
-function create_parking_details(parking_label,parking_status,updated_time_in_seconds){
+function create_parking_details(parking_label,parking_status,updated_datetime){
 
 	let parking_information_status = create_parking_information_status(parking_status)
 
-	let parking_label_and_updated_time = create_parking_label_and_updated_time(parking_label,120)
+	let parking_label_and_updated_datetime = create_parking_label_and_updated_datetime(parking_label,updated_datetime)
 
 	let parking_li_node = document.createElement("li"); 
 	parking_li_node.className = "list-group-item";
-	parking_li_node.appendChild(parking_label_and_updated_time);
+	parking_li_node.appendChild(parking_label_and_updated_datetime);
 	parking_li_node.appendChild(parking_information_status);
 
 	return parking_li_node
@@ -57,7 +70,7 @@ async function add_parking_information(parking_label){
 
 	const parking_informations = await get_parking_by_label(parking_label);
 
-	const parking_details = create_parking_details(parking_label,parking_informations.Status,120)
+	const parking_details = create_parking_details(parking_label,parking_informations.Status,parking_informations.DateTime)
 
 	document.getElementById("parkings").appendChild(parking_details); 
 
@@ -104,7 +117,7 @@ function get_all_parking_labels(){
 	});
 }
 
-async function asyncCall() {
+async function get_parking_informations() {
 
   const parking_labels = await get_all_parking_labels();
 
@@ -112,4 +125,4 @@ async function asyncCall() {
  
 }
 
-export {asyncCall}
+export {get_parking_informations}

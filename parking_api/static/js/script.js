@@ -1,5 +1,4 @@
-import {asyncCall} from "./modules/parking_requests.js"
+import {get_parking_informations} from "./modules/parking_requests.js"
 
 
-asyncCall();
-
+get_parking_informations();
