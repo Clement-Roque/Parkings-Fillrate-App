@@ -11,21 +11,25 @@ def is_parking_label_invalid(parking_label: str) -> bool:
 
 
 @parking_bp.route('/parking/<parking_label>')
-def parking_by_label(parking_label: str):
+def parking_by_label(parking_label: str) -> flask.Response:
 
     if is_parking_label_invalid(parking_label):
         raise werkzeug.exceptions.NotFound
 
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
-    return flask.jsonify(parking_service.get_parking_by_label(parking_label))
+
+    response: flask.Response = flask.make_response(flask.jsonify(
+        parking_service.get_parking_by_label(parking_label)))
+
+    return response
 
 
 @parking_bp.route('/parkings')
-def parking_labels():
+def parking_labels() -> flask.Response:
 
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
 
-    response: flask.Flask.response_class = flask.make_response(flask.jsonify(
+    response: flask.Response = flask.make_response(flask.jsonify(
         parking_service.get_parking_labels()), {'Access-Control-Allow-Origin': '*'})
 
     return response

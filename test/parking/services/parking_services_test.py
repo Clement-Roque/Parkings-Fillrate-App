@@ -1,5 +1,5 @@
 from typing import cast
-import pytest  # type: ignore
+import pytest
 from parking_api.parking.services.parking_services import ParkingServices
 from parking_api.parking.ressources import meta_data
 
@@ -8,7 +8,7 @@ from parking_api.parking.ressources import meta_data
 def parking_services_test() -> ParkingServices:
     return ParkingServices()
 
-def test_get_parking_labels(parking_services_test: ParkingServices):
+def test_get_parking_labels(parking_services_test: ParkingServices) -> None:
 
     parking_labels = parking_services_test.get_parking_labels()
 
@@ -17,7 +17,7 @@ def test_get_parking_labels(parking_services_test: ParkingServices):
         assert parking_label in meta_data.parking_labels
 
 
-def test_get_parking_by_label(parking_services_test: ParkingServices):
+def test_get_parking_by_label(parking_services_test: ParkingServices) -> None:
 
     parking_to_test = parking_services_test.get_parking_by_label("Antigone")
 

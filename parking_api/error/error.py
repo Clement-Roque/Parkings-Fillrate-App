@@ -5,7 +5,7 @@ error_bp = flask.Blueprint('error', __name__)
 
 
 @error_bp.app_errorhandler(werkzeug.exceptions.NotFound)
-def handle_not_found_error(error):
+def handle_not_found_error(error: werkzeug.exceptions.NotFound) -> flask.Response:
 
     flask.current_app.logger.info(error)
     status_code: int = 404
@@ -17,11 +17,11 @@ def handle_not_found_error(error):
         }
     }
 
-    return flask.jsonify(response), status_code
+    return flask.make_response(flask.jsonify(response), status_code)
 
 
 @error_bp.app_errorhandler(Exception)
-def handle_unexpected_error(error):
+def handle_unexpected_error(error: Exception) -> flask.Response:
 
     flask.current_app.logger.info(error)
     status_code: int = 500
@@ -33,4 +33,4 @@ def handle_unexpected_error(error):
         }
     }
 
-    return flask.jsonify(response), status_code
+    return flask.make_response(flask.jsonify(response), status_code)

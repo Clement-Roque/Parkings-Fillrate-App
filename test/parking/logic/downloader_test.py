@@ -1,10 +1,11 @@
-import pytest  # type: ignore
+from typing import Dict, Union
+import pytest
 from parking_api.parking.logic import downloader
 from parking_api.parking.logic import validator
 from ..ressources import url
 
 
-def test_download_as_text():
+def test_download_as_text() -> None:
 
     with pytest.raises(Exception):
         assert downloader.download_as_text("www.false.Ressources.com")
@@ -16,9 +17,9 @@ def test_download_as_text():
     assert isinstance(text, str)
 
 
-def test_get_data_from_xml_parking_ressource():
+def test_get_data_from_xml_parking_ressource() -> None:
 
-    xml_content: str = downloader.get_data_from_xml_parking_ressource(
+    xml_content: Dict[str, Union[str, int, None]] = downloader.get_data_from_xml_parking_ressource(
         url.PARKING_ANTIGONE_URL)
 
     assert isinstance(xml_content, dict)

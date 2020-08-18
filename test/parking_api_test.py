@@ -1,45 +1,38 @@
-import os
-import tempfile
+from __future__ import annotations
+from typing import Generator
+import pytest
 
-import pytest  # type: ignore
-from flask import Flask
+from flask import Flask, testing, Response
 from parking_api import create_app
 
 
 @pytest.fixture
-def app():
-    """Create and configure a new app instance for each test."""
-    # create a temporary file to isolate the database for each test
-    db_fd, db_path = tempfile.mkstemp()
-    # create the app with common test config
-    app = create_app({"TESTING": True, "DATABASE": db_path})
+def app() -> Generator[Flask, None, None]:
+
+    app = create_app({"TESTING": True})
 
     yield app
 
-    # close and remove the temporary database
-    os.close(db_fd)
-    os.unlink(db_path)
-
 
 @pytest.fixture
-def client(app: Flask):
-    """A test client for the app."""
+def client(app: Flask) -> testing.FlaskClient[Response]:
+
     return app.test_client()
 
 
-def test_config():
-    """Test create_app without passing test config."""
+def test_config() -> None:
+
     assert not create_app().testing
     assert create_app({"TESTING": True}).testing
 
 
-def test_home(client):
+def test_home(client: testing.FlaskClient[Response]) -> None:
     response = client.get("/")
 
     assert response.status == '200 OK'
 
 
-def test_parking_by_label(client):
+def test_parking_by_label(client: testing.FlaskClient[Response]) -> None:
     response = client.get("/parking/Antigone")
 
     parking_json = response.get_json()
@@ -57,14 +50,14 @@ def test_parking_by_label(client):
     assert parking_json["Status"] in ['Open', 'Closed']
 
 
-def test_parking_by_label_not_found(client):
+def test_parking_by_label_not_found(client: testing.FlaskClient[Response]) -> None:
     response = client.get("/parking/Antine")
     assert response.status_code == 404
     assert response.get_data(
         as_text=True) == '{"error":{"message":"Ressource Not Found","type":"NotFoundException"},"success":false}\n'
 
 
-def test_parking_labels(client):
+def test_parking_labels(client: testing.FlaskClient[Response]) -> None:
     response = client.get("/parkings")
 
     parking_labels = response.get_json()

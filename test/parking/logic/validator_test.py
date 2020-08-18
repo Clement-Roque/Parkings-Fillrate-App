@@ -1,8 +1,9 @@
+from typing import Dict, Union
 from parking_api.parking.logic import validator
 
-def test_is_parking_json_valid():
+def test_is_parking_json_valid() -> None:
 
-    valid_parking_json = {
+    valid_parking_json: Dict[str, Union[str, int, None]] = {
         "Name": "ANTI",
         "Status": "Open",
         "Free": 23,
@@ -10,7 +11,7 @@ def test_is_parking_json_valid():
         "DateTime": "2020-07-10T16:08:53"
     }
 
-    invalid_parking_json = {
+    invalid_parking_json: Dict[str, Union[str, int, None]] = {
         "Name": 123,
         "Label": 34,
         "Status": 23,

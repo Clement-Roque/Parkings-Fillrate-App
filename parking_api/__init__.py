@@ -1,24 +1,25 @@
 import os
+from typing import Dict, Optional
 from flask import Flask
 from .index import index  # type: ignore
-from .parking import parking  # type: ignore
-from .error import error  # type: ignore
+from .parking import parking
+from .error import error
 
 
-def _initialize_blueprints(app):
+def _initialize_blueprints(app: Flask) -> None:
     app.register_blueprint(index.index_bp)
     app.register_blueprint(parking.parking_bp)
 
 
-def _initialize_errors_hanlders(app):
+def _initialize_errors_hanlders(app: Flask) -> None:
     app.register_blueprint(error.error_bp)
 
 
-def _initialize_url_rules(app):
+def _initialize_url_rules(app: Flask) -> None:
     app.add_url_rule('/', endpoint='index')
 
 
-def create_app(test_config=None):
+def create_app(test_config: Optional[Dict[str, bool]] = None) -> Flask:
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(

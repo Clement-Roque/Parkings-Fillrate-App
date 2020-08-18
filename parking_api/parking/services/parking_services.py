@@ -4,7 +4,7 @@ from ..logic import downloader
 
 class ParkingServices():
 
-    def __init__(self):
+    def __init__(self) -> None:
 
         self.parking_url: str = meta_data.PARKING_URL
         self.parking_labels: List[str] = meta_data.parking_labels
