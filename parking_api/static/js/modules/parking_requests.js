@@ -1,107 +1,138 @@
-function get_datetime_diff_from_now_in_minutes(datetime){
+function get_datetime_diff_from_now_in_minutes(datetime_str){
 
-	let datetime_to_diff = new Date(datetime);
+	let datetime_to_diff = new Date(datetime_str);
 	let now = Date.now();
 
 	return Math.ceil((now-datetime_to_diff)/1000/60);
 }
 
 
-function create_parking_information_updated_datetime(updated_datetime_in_minutes){
+function create_parking_last_update(last_update){
 
-	let parking_small_node = document.createElement("small"); 
-	parking_small_node.className = "d-flex";
-	let update_message = "Updated "+updated_datetime_in_minutes+" minutes ago";
-	if (updated_datetime_in_minutes>=60){
-		update_message = "Hasn't been updated for a while";
+	const last_update_minutes = get_datetime_diff_from_now_in_minutes(last_update);
+
+	let parking_last_update = document.createElement("small"); 
+	parking_last_update.className = "col text-right";
+
+	let update_message = "Updated "+last_update_minutes+" minutes ago";
+
+	if (last_update_minutes>=60){
+		update_message = "Hasn't been updated for an hour";
 	}
-	parking_small_node.appendChild(document.createTextNode(update_message));
+	parking_last_update.appendChild(document.createTextNode(update_message));
 
-	return parking_small_node;
+	return parking_last_update;
 }
 
-function create_parking_information_status(parking_status){
+function create_parking_status(parking_status){
 
-	let parking_span_node = document.createElement("span");
+	let parking_information_status = document.createElement("span");
 	if(parking_status == "Open"){
 
-		parking_span_node.className = "badge badge-success badge-pill";
-		parking_span_node.appendChild(document.createTextNode(parking_status));
+		parking_information_status.className = "badge badge-success badge-pill";
+		parking_information_status.appendChild(document.createTextNode(parking_status));
 	}
 	else{
 
-		parking_span_node.className = "badge badge-danger badge-pill";
-		parking_span_node.appendChild(document.createTextNode("Closed"));
+		parking_information_status.className = "badge badge-danger badge-pill";
+		parking_information_status.appendChild(document.createTextNode("Closed"));
 	}
 
-	return parking_span_node;
+	return parking_information_status;
 }
 
-function create_parking_fill_bar(){
+function create_parking_fillrate_bar(free, total){
 
-	let parking_progressbar_node = document.createElement("div");
-	parking_progressbar_node.setAttribute("aria-valuemax", "100");
-	parking_progressbar_node.setAttribute("aria-valuemin", "0");
-	parking_progressbar_node.setAttribute("aria-valuenow", "25");
-	parking_progressbar_node.setAttribute("style", "width: 25%;");
-	parking_progressbar_node.setAttribute("role", "progressbar");
-	parking_progressbar_node.className = "progress-bar";
-	parking_progressbar_node.appendChild(document.createTextNode("25%"));
+	const fillrate = Math.floor((free/total)*100);
 
-	let parking_progress_node = document.createElement("div");
-	parking_progress_node.className = "progress col-4 px-0";
-
-	parking_progress_node.appendChild(parking_progressbar_node)
-
-	return parking_progress_node
-
-}
-
-function create_parking_label_and_updated_datetime(parking_label, updated_datetime_in_minutes){
-
-	let parking_div_node = document.createElement("div"); 
-	parking_div_node.className = "d-flex justify-content-between";
-	parking_div_node.appendChild(document.createTextNode(parking_label));
-
-	let parking_fill_bar = create_parking_fill_bar();
-	parking_div_node.appendChild(parking_fill_bar);
+	let class_attributes = "progress-bar"
+	if(fillrate==100){
+		class_attributes = class_attributes+" bg-danger"
+	}
+	else if (fillrate>=75){
+		class_attributes = class_attributes+" bg-warning"
+	}
 
 
-	let parking_updated_datetime = create_parking_information_updated_datetime(updated_datetime_in_minutes)
-	parking_div_node.appendChild(parking_updated_datetime);
+	let parking_fillrate = document.createElement("div");
+	parking_fillrate.setAttribute("aria-valuemax", "100");
+	parking_fillrate.setAttribute("aria-valuemin", "0");
+	parking_fillrate.setAttribute("aria-valuenow", fillrate);
+	parking_fillrate.setAttribute("style", "width: "+fillrate+"%;");
+	parking_fillrate.setAttribute("role", "progressbar");
+	parking_fillrate.className = class_attributes;
+	parking_fillrate.appendChild(document.createTextNode(fillrate+"%"));
 
-	return parking_div_node;
-}
+	let parking_fillrate_bar = document.createElement("div");
+	parking_fillrate_bar.className = "progress col-4 px-0";
 
-function create_parking_details(parking_label,parking_status,updated_datetime_in_minutes){
+	parking_fillrate_bar.appendChild(parking_fillrate)
 
-	let parking_information_status = create_parking_information_status(parking_status)
-
-	let parking_label_and_updated_datetime = create_parking_label_and_updated_datetime(parking_label,updated_datetime_in_minutes)
-
-
-	let parking_li_node = document.createElement("li"); 
-	parking_li_node.className = "list-group-item";
-	parking_li_node.appendChild(parking_label_and_updated_datetime);
-	parking_li_node.appendChild(parking_information_status);
-
-	return parking_li_node
+	return parking_fillrate_bar;
 
 }
 
-async function add_parking_information(parking_label){
+function create_parking_label(parking_label){
 
-	const parking_informations = await get_parking_by_label(parking_label);
+	let parking_information_label =  document.createElement("p"); 
+	parking_information_label.className = "col";
+	parking_information_label.appendChild(document.createTextNode(parking_label));
 
-	const updated_datetime_in_minutes = get_datetime_diff_from_now_in_minutes(parking_informations.DateTime);
-
-	const parking_details = create_parking_details(parking_label,parking_informations.Status,updated_datetime_in_minutes)
-
-	document.getElementById("parkings").appendChild(parking_details); 
+	return parking_information_label;
 
 }
 
-function get_parking_by_label(parking_label){
+
+function create_parking_informations(parking_data){
+
+	let parking_informations = document.createElement("div"); 
+	parking_informations.className = "row";
+
+	let parking_information_label =  create_parking_label(parking_data.Label);
+	
+
+	let parking_fill_bar = create_parking_fillrate_bar(parking_data.Free, parking_data.Total);
+	
+
+	let parking_updated_datetime = create_parking_last_update(parking_data.DateTime)
+	
+
+	parking_informations.appendChild(parking_information_label);
+	parking_informations.appendChild(parking_fill_bar);
+	parking_informations.appendChild(parking_updated_datetime);
+
+	return parking_informations;
+}
+
+
+
+function create_parking(parking_data){
+
+	let parking = document.createElement("li"); 
+	parking.className = "list-group-item";
+
+	let parking_informations = create_parking_informations(parking_data)
+	let parking_information_status = create_parking_status(parking_data.Status)
+
+	parking.appendChild(parking_informations);
+	parking.appendChild(parking_information_status);
+
+	return parking;
+
+}
+
+async function add_parking_to_parking_list(parking_label){
+
+	let parking_data = await get_parking_data_by_label(parking_label);
+	parking_data.Label = parking_label;
+
+	const parking = create_parking(parking_data)
+
+	document.getElementById("parkings").appendChild(parking); 
+
+}
+
+function get_parking_data_by_label(parking_label){
 
 	return new Promise((resolve, reject) => {
 	    var parking_requests = new XMLHttpRequest();
@@ -146,7 +177,7 @@ async function get_parking_informations() {
 
   const parking_labels = await get_all_parking_labels();
 
-  parking_labels.forEach(parking_label => add_parking_information(parking_label));
+  parking_labels.forEach(parking_label => add_parking_to_parking_list(parking_label));
  
 }
 

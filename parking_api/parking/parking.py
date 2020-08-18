@@ -19,7 +19,7 @@ def parking_by_label(parking_label: str) -> flask.Response:
     parking_service: parking_services.ParkingServices = parking_services.ParkingServices()
 
     response: flask.Response = flask.make_response(flask.jsonify(
-        parking_service.get_parking_by_label(parking_label)))
+        parking_service.get_parking_data_by_label(parking_label)))
 
     return response
 

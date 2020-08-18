@@ -17,9 +17,9 @@ def test_get_parking_labels(parking_services_test: ParkingServices) -> None:
         assert parking_label in meta_data.parking_labels
 
 
-def test_get_parking_by_label(parking_services_test: ParkingServices) -> None:
+def test_get_parking_data_by_label(parking_services_test: ParkingServices) -> None:
 
-    parking_to_test = parking_services_test.get_parking_by_label("Antigone")
+    parking_to_test = parking_services_test.get_parking_data_by_label("Antigone")
 
     assert parking_to_test
     assert isinstance(parking_to_test, dict)
