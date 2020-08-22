@@ -12,9 +12,9 @@ def test_get_parking_labels(parking_services_test: ParkingServices) -> None:
 
     parking_labels = parking_services_test.get_parking_labels()
 
-    assert len(parking_labels) == len(meta_data.parking_labels)
+    assert len(parking_labels) == len(meta_data.parking_labels_to_filenames)
     for parking_label in parking_labels:
-        assert parking_label in meta_data.parking_labels
+        assert parking_label in meta_data.parking_labels_to_filenames.keys()
 
 
 def test_get_parking_data_by_label(parking_services_test: ParkingServices) -> None:

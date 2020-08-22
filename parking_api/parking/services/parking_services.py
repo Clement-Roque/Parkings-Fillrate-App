@@ -7,7 +7,7 @@ class ParkingServices():
     def __init__(self) -> None:
 
         self.parking_url: str = meta_data.PARKING_URL
-        self.parking_labels: List[str] = meta_data.parking_labels
+        self.parking_labels: List[str] = list(meta_data.parking_labels_to_filenames.keys())
         self.parking_labels_to_filenames: Dict[str,
                                                str] = meta_data.parking_labels_to_filenames
 

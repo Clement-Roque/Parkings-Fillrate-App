@@ -23,31 +23,6 @@ parking_labels_to_filenames = {
     'Charles de Gaulle': 'FR_CAS_CDGA.xml',
 }
 
-parking_labels = [
-    'Antigone',
-    'Comédie',
-    'Corum',
-    'Europa',
-    'Foch',
-    'Gambetta',
-    'Gare',
-    'du Triangle',
-    'Arc de Triomphe',
-    'Pitot',
-    'Circe',
-    'Sabines',
-    'Garcia Lorca',
-    'Sablassou',
-    'Mosson',
-    'Saint Jean Le Sec',
-    'Euromédecine',
-    'Occitanie',
-    'Vicarello',
-    'Gaumont EST',
-    'Gaumont OUEST',
-    'Charles de Gaulle',
-]
-
 parking_fields = ['DateTime', 'Name', 'Status', 'Free', 'Total']
 PARKING_URL = "http://data.montpellier3m.fr/sites/default/files/ressources/"
 parking_json_schema = {
