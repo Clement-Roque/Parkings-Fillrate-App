@@ -1,6 +1,8 @@
 # Parking's Fillrate App
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Clement-Roque/Parking/Tests)
 
+<img src="https://user-images.githubusercontent.com/15324903/94539609-beadeb00-0245-11eb-80d4-9efe8a661e1b.png" height="400">
+
 This application use OpenData from the south french city Montpellier in order to provide a fillrate for the various parking in the city.
 It's build using Python 3.8 and the Flask framework.
 
